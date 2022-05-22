@@ -1,4 +1,4 @@
-import { CREATE_POST_FAIL, CREATE_POST_REQUEST, CREATE_POST_RESET, CREATE_POST_SUCCESS, GET_ALL_POSTS_FAIL, GET_ALL_POSTS_REQUEST, GET_ALL_POSTS_RESET, GET_ALL_POSTS_SUCCESS } from "../constants/postConstant";
+import { CREATE_POST_FAIL, CREATE_POST_REQUEST, CREATE_POST_RESET, CREATE_POST_SUCCESS, DELETE_POST_FAIL, DELETE_POST_REQUEST, DELETE_POST_RESET, DELETE_POST_SUCCESS, GET_ALL_POSTS_FAIL, GET_ALL_POSTS_REQUEST, GET_ALL_POSTS_RESET, GET_ALL_POSTS_SUCCESS } from "../constants/postConstant";
 
 export const getAllPostsReducers = (state = {}, action) => {
 	switch (action.type) {
@@ -31,6 +31,25 @@ export const createPostReducers = (state = {}, action) => {
 			return { loading: false, error: action.payload };
 
 		case CREATE_POST_RESET:
+			return {};
+
+		default:
+			return state;
+	}
+};
+export const deletePostReducers = (state = {}, action) => {
+	switch (action.type) {
+
+		case DELETE_POST_REQUEST:
+			return { loading: true };
+
+		case DELETE_POST_SUCCESS:
+			return { data: action.payload, loading: false };
+
+		case DELETE_POST_FAIL:
+			return { loading: false, error: action.payload };
+
+		case DELETE_POST_RESET:
 			return {};
 
 		default:

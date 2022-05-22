@@ -1,17 +1,25 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPostsAction } from '../../Redux/actions/postActions';
+import {useHistory } from "react-router-dom";
+
 import { userLoginAction } from '../../Redux/actions/userActions';
 import './login.css'
 
 const Login = () => {
     const dispatch = useDispatch();
-
+    const userLogin = useSelector((state) => state.userLogin);
+    const history = useHistory();
 
     const [loginDetails, setLoginDetails] = useState({
         username: '',
         password: ''
     })
+    useEffect(() => {
+      if(userLogin && userLogin.userInfo && userLogin.userInfo.token){
+          history.push('/')
+      }
+    }, [userLogin])
+
 
     const handleLogin = (e)=>{
         e.preventDefault();

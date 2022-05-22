@@ -55,7 +55,10 @@ router.delete('/deleteblog/:id',authToken, async (req, res)=>{
     try{
         // const post = await Post.findbyId(req.params.id)
         await Post.findByIdAndDelete(req.params.id);
-        res.status(200).json("Post deleted");
+        res.status(200).json({
+            message:"Post deleted",
+        success: true
+    });
 
     } catch(err){
         res.status(500).json(err);

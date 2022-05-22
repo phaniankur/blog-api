@@ -1,5 +1,5 @@
 .post {
-  max-width: 300px;
+  width: 300px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -13,6 +13,16 @@
   max-height: 200px;
   object-fit: cover;
   border-radius: 7px;
+}
+.post--username1{
+  font-size: 12px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  color: #5e5e5e;
+  font-style: italic;
+  margin: 0;
 }
 .post--username{
   font-size: 12px;

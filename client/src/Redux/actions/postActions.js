@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { CREATE_POST_FAIL, CREATE_POST_REQUEST, CREATE_POST_SUCCESS, GET_ALL_POSTS_FAIL, GET_ALL_POSTS_REQUEST, GET_ALL_POSTS_SUCCESS } from "../constants/postConstant";
+import { CREATE_POST_FAIL, CREATE_POST_REQUEST, CREATE_POST_SUCCESS, DELETE_POST_FAIL, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, GET_ALL_POSTS_FAIL, GET_ALL_POSTS_REQUEST, GET_ALL_POSTS_SUCCESS } from "../constants/postConstant";
 import { BASE_URL } from './.ip';
 
 export const getAllPostsAction = () => async (dispatch) => {
@@ -42,6 +42,31 @@ export const createPostAction = (formData) => async (dispatch, getState) => {
 	} catch (err) {
 		dispatch({
 			type: CREATE_POST_FAIL,
+			payload: err.message
+		});
+	}
+};
+export const deletePostAction = (id) => async (dispatch, getState) => {
+	try {
+		const { userLogin: {userInfo} } = getState();
+		console.log(userInfo.token);
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+		dispatch({ type: DELETE_POST_REQUEST });
+
+		const { data } = await axios.delete(`${BASE_URL}/deleteblog/${id}`, config);
+
+		dispatch({
+			type: DELETE_POST_SUCCESS,
+			payload: data
+		});
+	} catch (err) {
+		dispatch({
+			type: DELETE_POST_FAIL,
 			payload: err.message
 		});
 	}

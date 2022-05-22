@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPostsAction } from '../../Redux/actions/postActions';
+import { deletePostAction, getAllPostsAction } from '../../Redux/actions/postActions';
 
 import Post from '../Post/Post'
 import './posts.css'
@@ -8,13 +8,23 @@ import './posts.css'
 function Posts() {
     const dispatch = useDispatch();
     const allPosts = useSelector((state) => state.getAllPosts);
+    const deletePost = useSelector((state) => state.deletePost);
 
     useEffect(() => {
 
       dispatch(getAllPostsAction())
     }, [])
-    console.log(allPosts)
 
+    useEffect(() => {
+        if(deletePost && deletePost.data && deletePost.data.success){
+            dispatch(getAllPostsAction())
+        }
+    }, [deletePost])
+
+
+    const handleDelete = (id)=>{
+        dispatch(deletePostAction(id))
+    }
     return (
         <div className='posts'>
             {
@@ -25,6 +35,7 @@ function Posts() {
                     desc={item.desc}
                     username = {item.username}
                     date={item.createdAt}
+                    handleDelete={()=>handleDelete(item._id)}
                     />
                 ))
             }

@@ -1,6 +1,6 @@
 import "./post.css";
 
-export default function Post({title, desc, username, date}) {
+export default function Post({title, desc, username, date, handleDelete}) {
   return (
     <div className="post">
       {/* <img
@@ -8,7 +8,6 @@ export default function Post({title, desc, username, date}) {
         src='https://images.hindustantimes.com/auto/img/2022/05/20/600x338/Scorpio_N_(1)_1653046262079_1653046289319.jpg'
         alt=""
       /> */}
-
 
       <div className="postInfo">
 
@@ -23,11 +22,17 @@ export default function Post({title, desc, username, date}) {
       <div className="post--username">
         <p>{username}</p>
         <p>{new Date(date).toLocaleDateString('en-IN', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-            })}</p>
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+          })}</p>
       </div>
+      <div className="post--username1">
+          <p style={{color: 'red', fontWeight: 'bold'}}
+          onClick={handleDelete}
+          >Delete Post</p>
+        </div>
+
 
     </div>
   );

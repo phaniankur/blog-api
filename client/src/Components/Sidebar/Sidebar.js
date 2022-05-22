@@ -15,6 +15,7 @@ export default function Sidebar() {
     if(createPost && createPost.data && createPost.data.success){
 
         dispatch(getAllPostsAction())
+        setPostData({title: '', desc: ''})
     }
   }, [createPost])
 
