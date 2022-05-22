@@ -28,7 +28,7 @@ export default function Post({title, desc, username, date, handleDelete}) {
           })}</p>
       </div>
       <div className="post--username1">
-          <p style={{color: 'red', fontWeight: 'bold'}}
+          <p style={{color: 'red', fontWeight: 'bold', cursor: 'pointer'}}
           onClick={handleDelete}
           >Delete Post</p>
         </div>
