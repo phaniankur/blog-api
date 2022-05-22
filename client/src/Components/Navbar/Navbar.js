@@ -24,11 +24,7 @@ export default function Navbar () {
 
                 </li>
                 <li className='nav-item'>
-                    <Link to='/subscription' className='nav-links' onClick={closeMobileMenu}>Subscription</Link>
-
-                </li>
-                <li className='nav-item'>
-                    <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>Dashboard</Link>
+                    <Link to='/login' className='nav-links' onClick={closeMobileMenu}>Login</Link>
 
                 </li>
                 <li className='nav-item'>
@@ -40,7 +36,7 @@ export default function Navbar () {
 
                 </li>
             </ul>
-            
+
         </nav>
         </>
     )
