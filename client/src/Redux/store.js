@@ -2,10 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { getAllPostsReducers } from './reducers/postReducer';
+import { createPostReducers, getAllPostsReducers } from './reducers/postReducer';
+import { userLoginReducers } from './reducers/userReducer';
 
 const reducer = combineReducers({
-getAllPosts : getAllPostsReducers
+    userLogin: userLoginReducers,
+
+    getAllPosts : getAllPostsReducers,
+    createPost: createPostReducers
 });
 
 const initialState = {

@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+var cors = require('cors')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const authRoute = require('./routes/auth')
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URL,
 .catch(err=> console.log(err))
 
 
+app.use(cors())
 app.use('/api/auth', authRoute);
 app.use('/api/', postRoute, welFormRoute);
 // app.use('/api/', welFormRoute);

@@ -24,10 +24,10 @@ router.post('/postblog',authToken, async (req, res)=>{
         })
         newPost.save()
         res.status(200).json(
-            newPost
+            {success: true}
         )
     }catch(err){
-        res.json(err)
+        res.json({...err, success: false})
     }
 
 })
