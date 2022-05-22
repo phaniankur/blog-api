@@ -1,6 +1,6 @@
 import "./post.css";
 
-export default function Post({img}) {
+export default function Post({title, desc, username, date}) {
   return (
     <div className="post">
       {/* <img
@@ -13,17 +13,20 @@ export default function Post({img}) {
       <div className="postInfo">
 
         <h2 className="postTitle">
-            Blog Title
+            {title}
         </h2>
         {/* <span className="postDate">25/10/22</span> */}
         <p className="postDesc">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-        officia architecto deserunt deleniti?
+        {desc}
       </p>
       </div>
       <div className="post--username">
-        <p>Username</p>
-        <p>25/02/22</p>
+        <p>{username}</p>
+        <p>{new Date(date).toLocaleDateString('en-IN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+            })}</p>
       </div>
 
     </div>
